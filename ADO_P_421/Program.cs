@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace ADO_P_421
 {
@@ -15,14 +16,15 @@ namespace ADO_P_421
         
         static void Main(string[] args)
         {
-            string connection_string = "Data Source = (localdb)\\MSSQLLocalDB;" +
-                "Initial Catalog=Movies; " +
-                "Integrated Security=True; " +
-                "Connect Timeout=30; " +
-                "Encrypt=False; " +
-                "TrustServerCertificate=False; " +
-                "ApplicationIntent=ReadWrite; " +
-                "MultiSubnetFailover=False";
+            string connection_string = ConfigurationManager.ConnectionStrings["P_421_Import"].ConnectionString;
+                //"Data Source = (localdb)\\MSSQLLocalDB;" +
+                //"Initial Catalog=Movies; " +
+                //"Integrated Security=True; " +
+                //"Connect Timeout=30; " +
+                //"Encrypt=False; " +
+                //"TrustServerCertificate=False; " +
+                //"ApplicationIntent=ReadWrite; " +
+                //"MultiSubnetFailover=False";
             Connector connector = new Connector(connection_string);
 #if SELECT
 
