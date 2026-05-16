@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using System.Data.SqlClient;
 
 namespace ADO_P_421
 {
-    internal class Connector
+    class Connector
     {
         static SqlConnection connection;
         public Connector(string connection_string)
@@ -16,16 +16,15 @@ namespace ADO_P_421
             Console.WriteLine(connection_string);
             connection = new SqlConnection(connection_string);
         }
-        
         public string GetPrimaryKeyColumnName(string table)
         {
             //@"RAW-строка"
-            string cmd = $@"SELECT COLUMN_NAME
-FROM   INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE
-WHERE  INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE.CONSTRAINT_NAME = 
+            string cmd = $@"SELECT	COLUMN_NAME
+FROM INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE
+WHERE   INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE.CONSTRAINT_NAME =
 (
-SELECT CONSTRAINT_NAME FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
-WHERE  CONSTRAINT_TYPE=N'PRIMARY KEY' AND TABLE_NAME=N'{table}'
+SELECT  CONSTRAINT_NAME FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
+WHERE   CONSTRAINT_TYPE = N'PRIMARY KEY' AND TABLE_NAME = N'{table}'
 )";
             return Scalar(cmd).ToString();
         }
@@ -44,16 +43,15 @@ WHERE  CONSTRAINT_TYPE=N'PRIMARY KEY' AND TABLE_NAME=N'{table}'
             string[] s_fields = fields.Split(',');
             string[] s_values = values.Split(',');
             if (s_fields.Length != s_values.Length) return;
-            string condition = " ";
+            string condition = "";
             for (int i = 0; i < s_fields.Length; i++)
             {
                 if (s_fields[i] == pk) continue;
-                condition += $"{s_fields[i]}=N'{s_values[i]}'";
+                condition += $"{s_fields[i]}={s_values[i]}";
                 if (i != s_fields.Length - 1) condition += " AND ";
             }
             if (Scalar($"SELECT {GetPrimaryKeyColumnName(table)} FROM {table} WHERE {condition}") != null) return;
-
-            string cmd = $"INSERT {table}({fields}) VALUES({values})";
+            Insert($"INSERT {table}({fields}) VALUES({values})");
         }
         public void Insert(string cmd)
         {
