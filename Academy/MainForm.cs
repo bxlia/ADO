@@ -101,12 +101,13 @@ namespace Academy
 				queries[1].ToString()+ 
 				(cbGroupsDirection.SelectedIndex == 0 ? "" : $" AND direction={cbGroupsDirection.SelectedValue}")
 				);
-			
+
 			//Console.WriteLine($"SelectedIndex:{cbGroupsDirection.SelectedIndex}");
 			//Console.WriteLine($"SelectedItem:{cbGroupsDirection.SelectedItem}");
 			//Console.WriteLine($"SelectedText:{cbGroupsDirection.SelectedText}");
 			//Console.WriteLine($"SelectedValue:{cbGroupsDirection.SelectedValue}");
 			//Console.WriteLine(cbGroupsDirection.SelectedValue.GetType());
+			toolStripStatusLabel.Text = $"Количество записей: {tables[1].RowCount - 1}";
 		}
 
 		private void cbStudentsGroup_SelectionChangeCommitted(object sender, EventArgs e)
@@ -118,6 +119,7 @@ namespace Academy
 				queries[0].ToString() +
 				(cbStudentsGroup.SelectedIndex == 0 ? "" : $" AND [group]={cbStudentsGroup.SelectedValue}")
 				);
+			toolStripStatusLabel.Text = $"Количество записей: {tables[0].RowCount - 1}";
 		}
 
 		private void cbStudentsDirection_SelectionChangeCommitted(object sender, EventArgs e)
@@ -131,6 +133,7 @@ namespace Academy
 				(
 				cbStudentsGroup, "Groups", (cbStudentsDirection.SelectedIndex == 0 ? "" : $" direction={cbStudentsDirection.SelectedValue}")
 				);
+			toolStripStatusLabel.Text = $"Количество записей: {tables[0].RowCount - 1}";
 		}
 	}
 }
