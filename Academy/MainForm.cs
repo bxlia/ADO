@@ -53,19 +53,28 @@ namespace Academy
 			//toolStripStatusLabel.Text = $"Количество записей: {dgvStudents.RowCount - 1}";
 			tabControl.SelectedIndex = 0;
 			tabControl_SelectedIndexChanged(tabControl, null);
-			DataTable tGroupsDirection = connector.Load("SELECT * FROM Directions");
-			DataRow rowDefault = tGroupsDirection.NewRow();
-			rowDefault[0] = 0;
-			rowDefault[1] = "Все";
-			tGroupsDirection.Rows.InsertAt(rowDefault, 0);
-			cbGroupsDirection.DataSource = tGroupsDirection;
-			cbGroupsDirection.DisplayMember = "direction_name";
-			cbGroupsDirection.ValueMember = "direction_id";
 			//cbGroupsDirection.SelectedValue = 0;
+			LoadComboBoxFromBase(cbGroupsDirection, "Directions");
+			LoadComboBoxFromBase(cbStudentsGroup, "Groups");
+			LoadComboBoxFromBase(cbStudentsDirection, "Directions");
 		}
 
 		[DllImport("kernel32.dll")]
 		public static extern bool AllocConsole();
+		void LoadComboBoxFromBase(ComboBox comboBox, string table)
+		{
+			string column = table.Substring(0, table.Length - 1).ToLower();
+			DataTable dt = connector.Load($"SELECT {column}_id, {column}_name FROM {table}");
+			DataRow rowDefault = dt.NewRow();
+			rowDefault[0] = 0;
+			rowDefault[1] = "Все";
+			dt.Rows.InsertAt(rowDefault, 0);
+			cbGroupsDirection.DataSource = dt;
+			cbGroupsDirection.DisplayMember = $"{column}_name";
+			cbGroupsDirection.ValueMember = $"{column}_id";
+			
+		}
+
 		private void statusStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
 		{
 
@@ -96,6 +105,11 @@ namespace Academy
 			//Console.WriteLine($"SelectedText:{cbGroupsDirection.SelectedText}");
 			//Console.WriteLine($"SelectedValue:{cbGroupsDirection.SelectedValue}");
 			//Console.WriteLine(cbGroupsDirection.SelectedValue.GetType());
+		}
+
+		private void tabPageStudents_Click(object sender, EventArgs e)
+		{
+
 		}
 	}
 }
