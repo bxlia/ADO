@@ -20,7 +20,7 @@ namespace Academy
 		public override string ToString()
 		{
 			string cmd = $"SELECT {fields} FROM {tables}";
-			if (condition != "") cmd += $"WHERE {condition}";
+			if (condition != "") cmd += $" WHERE {condition}";
 			return cmd;
 		}
 	}
