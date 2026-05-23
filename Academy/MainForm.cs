@@ -107,9 +107,22 @@ namespace Academy
 			//Console.WriteLine(cbGroupsDirection.SelectedValue.GetType());
 		}
 
-		private void tabPageStudents_Click(object sender, EventArgs e)
+		private void cbStudentsGroup_SelectionChangeCommitted(object sender, EventArgs e)
 		{
+			tables[0].DataSource = connector.Load
+				(
+				queries[0].ToString() +
+				(cbStudentsGroup.SelectedIndex == 0 ? "" : $" AND [group]={cbStudentsGroup.SelectedValue}")
+				);
+		}
 
+		private void cbStudentsDirection_SelectionChangeCommitted(object sender, EventArgs e)
+		{
+			tables[0].DataSource = connector.Load
+				(
+				queries[0] +
+				(cbStudentsDirection.SelectedIndex == 0 ? "" : $" AND [group]={cbStudentsDirection.SelectedValue}")
+				);
 		}
 	}
 }
