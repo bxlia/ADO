@@ -57,8 +57,9 @@ namespace Academy
 			LoadComboBoxFromBase(cbGroupsDirection, "Directions");
 			LoadComboBoxFromBase(cbStudentsGroup, "Groups");
 			LoadComboBoxFromBase(cbStudentsDirection, "Directions");
+			
 		}
-
+		
 		[DllImport("kernel32.dll")]
 		public static extern bool AllocConsole();
 		void LoadComboBoxFromBase(ComboBox comboBox, string table, string condition="")
@@ -71,19 +72,30 @@ namespace Academy
 			rowDefault[0] = 0;
 			rowDefault[1] = "Все";
 			dt.Rows.InsertAt(rowDefault, 0);
-			cbGroupsDirection.DataSource = dt;
-			cbGroupsDirection.DisplayMember = $"{column}_name";
-			cbGroupsDirection.ValueMember = $"{column}_id";
+			comboBox.DataSource = dt;
+			comboBox.DisplayMember = $"{column}_name";
+			comboBox.ValueMember = $"{column}_id";
 			
 		}
-
-		private void statusStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-		{
-
-		}
+		 
 
 		private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			int cancellationTabIndex = 0;
+			switch (cancellationTabIndex)
+			{
+				case 0:
+					if (cbStudentsGroup.Items.Count > 0)
+						cbStudentsGroup.SelectedIndex = 0;
+					if (cbStudentsDirection.Items.Count > 0)
+						cbStudentsDirection.SelectedIndex = 0;
+					break;
+
+				case 1:
+					if (cbGroupsDirection.Items.Count > 0)
+						cbGroupsDirection.SelectedIndex = 0;
+					break;
+			}
 			int i = tabControl.SelectedIndex;
 			tables[i].DataSource = connector.Load(queries[i].ToString());
 			//tables[i].DataSource = connector.Select("*", $"{tabControl.SelectedTab.Text}");
@@ -92,6 +104,7 @@ namespace Academy
 				//tables[i].Columns[c].AutoSizeMode = 
 			tables[i].Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 			tables[i].Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+			cancellationTabIndex = i;
 		}
 
 		private void cbGroupsDirection_SelectionChangeCommitted(object sender, EventArgs e)
@@ -112,7 +125,7 @@ namespace Academy
 
 		private void cbStudentsGroup_SelectionChangeCommitted(object sender, EventArgs e)
 		{
-			if (cbStudentsGroup.SelectedIndex = 0)
+			if (cbStudentsGroup.SelectedIndex == 0)
 				cbStudentsDirection_SelectionChangeCommitted(cbStudentsDirection, null);
 			else tables[0].DataSource = connector.Load
 				(
