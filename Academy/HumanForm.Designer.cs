@@ -42,8 +42,9 @@
 			this.tbPhone = new System.Windows.Forms.TextBox();
 			this.btnOK = new System.Windows.Forms.Button();
 			this.btnCancel = new System.Windows.Forms.Button();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+			this.pictureBoxPhoto = new System.Windows.Forms.PictureBox();
+			this.labelID = new System.Windows.Forms.Label();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBoxPhoto)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// labelLastName
@@ -180,6 +181,7 @@
 			this.btnOK.TabIndex = 12;
 			this.btnOK.Text = "OK";
 			this.btnOK.UseVisualStyleBackColor = true;
+			this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
 			// 
 			// btnCancel
 			// 
@@ -191,21 +193,31 @@
 			this.btnCancel.Text = "Cancel";
 			this.btnCancel.UseVisualStyleBackColor = true;
 			// 
-			// pictureBox1
+			// pictureBoxPhoto
 			// 
-			this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.pictureBox1.Location = new System.Drawing.Point(772, 18);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(357, 464);
-			this.pictureBox1.TabIndex = 14;
-			this.pictureBox1.TabStop = false;
+			this.pictureBoxPhoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.pictureBoxPhoto.Location = new System.Drawing.Point(772, 18);
+			this.pictureBoxPhoto.Name = "pictureBoxPhoto";
+			this.pictureBoxPhoto.Size = new System.Drawing.Size(357, 464);
+			this.pictureBoxPhoto.TabIndex = 14;
+			this.pictureBoxPhoto.TabStop = false;
+			// 
+			// labelID
+			// 
+			this.labelID.AutoSize = true;
+			this.labelID.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.labelID.Location = new System.Drawing.Point(8, 612);
+			this.labelID.Name = "labelID";
+			this.labelID.Size = new System.Drawing.Size(0, 42);
+			this.labelID.TabIndex = 15;
 			// 
 			// HumanForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1155, 670);
-			this.Controls.Add(this.pictureBox1);
+			this.ClientSize = new System.Drawing.Size(1147, 670);
+			this.Controls.Add(this.labelID);
+			this.Controls.Add(this.pictureBoxPhoto);
 			this.Controls.Add(this.btnCancel);
 			this.Controls.Add(this.btnOK);
 			this.Controls.Add(this.tbPhone);
@@ -226,7 +238,7 @@
 			this.Name = "HumanForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "HumanForm";
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBoxPhoto)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -248,6 +260,7 @@
 		private System.Windows.Forms.TextBox tbPhone;
 		private System.Windows.Forms.Button btnOK;
 		private System.Windows.Forms.Button btnCancel;
-		private System.Windows.Forms.PictureBox pictureBox1;
+		private System.Windows.Forms.PictureBox pictureBoxPhoto;
+		private System.Windows.Forms.Label labelID;
 	}
 }
