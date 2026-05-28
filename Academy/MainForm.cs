@@ -54,9 +54,9 @@ namespace Academy
 			tabControl.SelectedIndex = 0;
 			tabControl_SelectedIndexChanged(tabControl, null);
 			//cbGroupsDirection.SelectedValue = 0;
-			LoadComboBoxFromBase(cbGroupsDirection, "Directions");
-			LoadComboBoxFromBase(cbStudentsGroup, "Groups");
-			LoadComboBoxFromBase(cbStudentsDirection, "Directions");
+			DataBase.LoadComboBoxFromBase(cbGroupsDirection, "Directions");
+			DataBase.LoadComboBoxFromBase(cbStudentsGroup, "Groups");
+			DataBase.LoadComboBoxFromBase(cbStudentsDirection, "Directions");
 			
 		}
 		
@@ -142,7 +142,7 @@ namespace Academy
 				queries[0] +
 				(cbStudentsDirection.SelectedIndex == 0 ? "" : $" AND [group]={cbStudentsDirection.SelectedValue}")
 				);
-			LoadComboBoxFromBase
+			DataBase.LoadComboBoxFromBase
 				(
 				cbStudentsGroup, "Groups", (cbStudentsDirection.SelectedIndex == 0 ? "" : $" direction={cbStudentsDirection.SelectedValue}")
 				);

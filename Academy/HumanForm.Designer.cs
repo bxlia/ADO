@@ -174,6 +174,7 @@
 			// 
 			// btnOK
 			// 
+			this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
 			this.btnOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.btnOK.Location = new System.Drawing.Point(772, 609);
 			this.btnOK.Name = "btnOK";
@@ -185,6 +186,7 @@
 			// 
 			// btnCancel
 			// 
+			this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.btnCancel.Location = new System.Drawing.Point(959, 609);
 			this.btnCancel.Name = "btnCancel";
