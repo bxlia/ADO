@@ -22,21 +22,20 @@ namespace Academy
 		{
 			new Query
 				(
-				"stud_id,FORMATMESSAGE(N'%s, %s, %s',last_name,first_name,middle_name)AS N'Студент',birth_date,group_name,direction_name",
-				"students,groups,directions",
-				"[group]=group_id and direction=direction_id"
+"stud_id,FORMATMESSAGE(N'%s %s %s',last_name,first_name,middle_name)AS N'Студент',birth_date,group_name,direction_name",
+"Students,Groups,Directions",
+"[group]=group_id AND direction=direction_id"
 				),
 			new Query
 				(
-				"group_id,group_name,direction_name, start_date,start_time,learning_days",
-				"Groups,Directions",
-				"direction=direction_id"
+"group_id,group_name,direction_name,start_date,start_time,learning_days",
+"Groups,Directions",
+"direction=direction_id"
 				),
 			new Query("*", "Directions"),
 			new Query("*", "Disciplines"),
 			new Query("*", "Teachers"),
 		};
-
 		public MainForm()
 		{
 			AllocConsole();
@@ -44,77 +43,58 @@ namespace Academy
 			tables = new DataGridView[] { dgvStudents, dgvGroups, dgvDirections, dgvDisciplines, dgvTeachers };
 			connector = new Connector(ConfigurationManager.ConnectionStrings["P_421_Import"].ConnectionString);
 			//dgvStudents.DataSource = connector.Load("SELECT * FROM Students");
-			//dgvStudents.DataSource = connector.Select
-			//	(
-			//	"stud_id,last_name,first_name,middle_name,birth_date,group_name,direction_name",
-			//	"students,groups,directions",
-			//	"[group]=group_id and direction=direction_id"
-			//	);
-			//toolStripStatusLabel.Text = $"Количество записей: {dgvStudents.RowCount - 1}";
+			/*dgvStudents.DataSource = connector.Load
+				(
+				"stud_id,last_name,first_name,middle_name,birth_date,group_name,direction_name",
+				"Students,Groups,Directions",
+				"[group]=group_id AND direction=direction_id"
+				);
+			toolStripStatusLabel.Text = $"Количество записей: {dgvStudents.RowCount - 1}";*/
 			tabControl.SelectedIndex = 0;
 			tabControl_SelectedIndexChanged(tabControl, null);
+			////////////////////////////////////
 			//cbGroupsDirection.SelectedValue = 0;
 			DataBase.LoadComboBoxFromBase(cbGroupsDirection, "Directions");
-			DataBase.LoadComboBoxFromBase(cbStudentsGroup, "Groups");
 			DataBase.LoadComboBoxFromBase(cbStudentsDirection, "Directions");
-			
+			DataBase.LoadComboBoxFromBase(cbStudentsGroup, "Groups");
 		}
-		
 		[DllImport("kernel32.dll")]
 		public static extern bool AllocConsole();
-		void LoadComboBoxFromBase(ComboBox comboBox, string table, string condition="")
-		{
-			string column = table.Substring(0, table.Length - 1).ToLower();
-			string cmd = $"SELECT {column}_id, {column}_name FROM {table}";
-			if (condition != "") cmd += $" WHERE {condition}";
-			DataTable dt = connector.Load(cmd);
-			DataRow rowDefault = dt.NewRow();
-			rowDefault[0] = 0;
-			rowDefault[1] = "Все";
-			dt.Rows.InsertAt(rowDefault, 0);
-			comboBox.DataSource = dt;
-			comboBox.DisplayMember = $"{column}_name";
-			comboBox.ValueMember = $"{column}_id";
-			
-		}
-		 
+		//void LoadComboBoxFromBase(ComboBox comboBox, string table, string condition = "")
+		//{
+		//	string column = table.Substring(0, table.Length - 1).ToLower();
+		//	string cmd = $"SELECT {column}_id,{column}_name FROM {table}";
+		//	if (condition != "") cmd += $" WHERE {condition}";
+		//	DataTable dt = connector.Load(cmd);
+		//	DataRow rowDefault = dt.NewRow();
+		//	rowDefault[0] = 0;
+		//	rowDefault[1] = "Все";
+		//	dt.Rows.InsertAt(rowDefault, 0);
+		//	comboBox.DataSource = dt;
+		//	comboBox.DisplayMember = $"{column}_name";
+		//	comboBox.ValueMember = $"{column}_id";
+		//}
 
 		private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			int cancellationTabIndex = 0;
-			switch (cancellationTabIndex)
-			{
-				case 0:
-					if (cbStudentsGroup.Items.Count > 0)
-						cbStudentsGroup.SelectedIndex = 0;
-					if (cbStudentsDirection.Items.Count > 0)
-						cbStudentsDirection.SelectedIndex = 0;
-					break;
-
-				case 1:
-					if (cbGroupsDirection.Items.Count > 0)
-						cbGroupsDirection.SelectedIndex = 0;
-					break;
-			}
 			int i = tabControl.SelectedIndex;
 			tables[i].DataSource = connector.Load(queries[i].ToString());
 			//tables[i].DataSource = connector.Select("*", $"{tabControl.SelectedTab.Text}");
 			toolStripStatusLabel.Text = $"Количество записей: {tables[i].RowCount - 1}";
-			//for(int c=0; c < tables[i].Columns.Count; c++)
-				//tables[i].Columns[c].AutoSizeMode = 
+			//for (int c = 0; c < tables[i].ColumnCount-1; c++)tables[i].Columns[c].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 			tables[i].Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-			tables[i].Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-			cancellationTabIndex = i;
+			tables[i].Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+			//TODO: drop filters
 		}
 
 		private void cbGroupsDirection_SelectionChangeCommitted(object sender, EventArgs e)
 		{
 			tables[1].DataSource = connector.Load
 				(
-				queries[1].ToString()+ 
+				queries[1].ToString() +
 				(cbGroupsDirection.SelectedIndex == 0 ? "" : $" AND direction={cbGroupsDirection.SelectedValue}")
 				);
-
 			//Console.WriteLine($"SelectedIndex:{cbGroupsDirection.SelectedIndex}");
 			//Console.WriteLine($"SelectedItem:{cbGroupsDirection.SelectedItem}");
 			//Console.WriteLine($"SelectedText:{cbGroupsDirection.SelectedText}");
@@ -140,20 +120,22 @@ namespace Academy
 			tables[0].DataSource = connector.Load
 				(
 				queries[0] +
-				(cbStudentsDirection.SelectedIndex == 0 ? "" : $" AND [group]={cbStudentsDirection.SelectedValue}")
+				(cbStudentsDirection.SelectedIndex == 0 ? "" : $" AND direction={cbStudentsDirection.SelectedValue}")
 				);
 			DataBase.LoadComboBoxFromBase
-				(
-				cbStudentsGroup, "Groups", (cbStudentsDirection.SelectedIndex == 0 ? "" : $" direction={cbStudentsDirection.SelectedValue}")
-				);
+			(
+				cbStudentsGroup,
+				"Groups",
+				(cbStudentsDirection.SelectedIndex == 0 ? "" : $" direction={cbStudentsDirection.SelectedValue}")
+			);
 			toolStripStatusLabel.Text = $"Количество записей: {tables[0].RowCount - 1}";
 		}
 
 		private void btnAddStudent_Click(object sender, EventArgs e)
 		{
 			StudentForm studentForm = new StudentForm();
-			studentForm.ShowDialog();
+			if (studentForm.ShowDialog() == DialogResult.OK)
+				tabControl_SelectedIndexChanged(tabControl, null);
 		}
-
 	}
 }
