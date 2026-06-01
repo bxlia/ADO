@@ -31,7 +31,7 @@
 			this.labelWorkSince = new System.Windows.Forms.Label();
 			this.labelRate = new System.Windows.Forms.Label();
 			this.tbWorkSince = new System.Windows.Forms.TextBox();
-			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.tbRate = new System.Windows.Forms.TextBox();
 			this.SuspendLayout();
 			// 
 			// labelWorkSince
@@ -62,20 +62,20 @@
 			this.tbWorkSince.Size = new System.Drawing.Size(480, 49);
 			this.tbWorkSince.TabIndex = 17;
 			// 
-			// textBox1
+			// tbRate
 			// 
-			this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.textBox1.Location = new System.Drawing.Point(194, 594);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(551, 49);
-			this.textBox1.TabIndex = 19;
+			this.tbRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.tbRate.Location = new System.Drawing.Point(194, 594);
+			this.tbRate.Name = "tbRate";
+			this.tbRate.Size = new System.Drawing.Size(551, 49);
+			this.tbRate.TabIndex = 19;
 			// 
 			// TeacherForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1147, 670);
-			this.Controls.Add(this.textBox1);
+			this.Controls.Add(this.tbRate);
 			this.Controls.Add(this.labelRate);
 			this.Controls.Add(this.tbWorkSince);
 			this.Controls.Add(this.labelWorkSince);
@@ -85,7 +85,7 @@
 			this.Controls.SetChildIndex(this.labelWorkSince, 0);
 			this.Controls.SetChildIndex(this.tbWorkSince, 0);
 			this.Controls.SetChildIndex(this.labelRate, 0);
-			this.Controls.SetChildIndex(this.textBox1, 0);
+			this.Controls.SetChildIndex(this.tbRate, 0);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -96,6 +96,6 @@
 		private System.Windows.Forms.Label labelWorkSince;
 		private System.Windows.Forms.Label labelRate;
 		private System.Windows.Forms.TextBox tbWorkSince;
-		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.TextBox tbRate;
 	}
 }

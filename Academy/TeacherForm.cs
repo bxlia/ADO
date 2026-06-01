@@ -13,6 +13,7 @@ namespace Academy
 {
 	public partial class TeacherForm : HumanForm
 	{
+		Models.Teacher teacher;
 		public TeacherForm()
 		{
 			InitializeComponent();
@@ -21,8 +22,8 @@ namespace Academy
 		protected override void btnOK_Click(object sender, EventArgs e)
 		{
 			base.btnOK_Click(sender, e);
-			//student = new Models.Student(human, (int)cbGroup.SelectedValue);
-			//DataBase.Connector.Insert($"INSERT Students({student.GetNames()}) VALUES({student.GetValues()})");
+			teacher = new Models.Teacher(human, DateTime.Parse(tbWorkSince.Text), Decimal.Parse(tbRate.Text));
+			DataBase.Connector.Insert($"INSERT Teachers({teacher.GetNames()}) VALUES({teacher.GetValues()})");
 		}
 
 		private void TeacherForm_Load(object sender, EventArgs e)
