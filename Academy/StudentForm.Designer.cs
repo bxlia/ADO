@@ -61,6 +61,7 @@
 			this.Controls.Add(this.labelGroup);
 			this.Name = "StudentForm";
 			this.Text = "StudentForm";
+			this.Load += new System.EventHandler(this.StudentForm_Load);
 			this.Controls.SetChildIndex(this.labelGroup, 0);
 			this.Controls.SetChildIndex(this.cbGroup, 0);
 			this.ResumeLayout(false);

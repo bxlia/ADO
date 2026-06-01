@@ -27,5 +27,10 @@ namespace Academy
 			student = new Models.Student(human, (int)cbGroup.SelectedValue);
 			DataBase.Connector.Insert($"INSERT Students({student.GetNames()}) VALUES({student.GetValues()})");
 		}
+
+		private void StudentForm_Load(object sender, EventArgs e)
+		{
+
+		}
 	}
 }
