@@ -57,6 +57,8 @@ namespace Academy
 			DataBase.LoadComboBoxFromBase(cbGroupsDirection, "Directions");
 			DataBase.LoadComboBoxFromBase(cbStudentsDirection, "Directions");
 			DataBase.LoadComboBoxFromBase(cbStudentsGroup, "Groups");
+
+			btnAddTeacher.Click += new EventHandler(btnAddTeacher_Click);
 		}
 		[DllImport("kernel32.dll")]
 		public static extern bool AllocConsole();
