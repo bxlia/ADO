@@ -21,6 +21,14 @@ namespace Academy
 			//cbGroup.ValueMember = "group_id";
 			DataBase.LoadComboBoxFromBase(cbGroup, "Groups");
 		}
+		public StudentForm(int id) : this() //:this() - делегирует (вызывает) конструктор по умолчанию
+		{
+			DataTable data = DataBase.Connector.Load
+				(
+					"*", "Students", $"stud_id={id}"
+				);
+		}
+
 		protected override void btnOK_Click(object sender, EventArgs e)
 		{
 			base.btnOK_Click(sender, e);

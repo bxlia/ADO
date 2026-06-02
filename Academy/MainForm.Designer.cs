@@ -151,9 +151,12 @@
 			this.dgvStudents.Location = new System.Drawing.Point(11, 49);
 			this.dgvStudents.Margin = new System.Windows.Forms.Padding(6);
 			this.dgvStudents.Name = "dgvStudents";
+			this.dgvStudents.ReadOnly = true;
 			this.dgvStudents.RowHeadersWidth = 82;
+			this.dgvStudents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dgvStudents.Size = new System.Drawing.Size(1456, 635);
 			this.dgvStudents.TabIndex = 0;
+			this.dgvStudents.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvStudents_CellMouseDoubleClick);
 			// 
 			// tabPageGroups
 			// 
