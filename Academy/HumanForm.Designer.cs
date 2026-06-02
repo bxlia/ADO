@@ -201,8 +201,10 @@
 			this.pictureBoxPhoto.Location = new System.Drawing.Point(772, 18);
 			this.pictureBoxPhoto.Name = "pictureBoxPhoto";
 			this.pictureBoxPhoto.Size = new System.Drawing.Size(357, 464);
+			this.pictureBoxPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.pictureBoxPhoto.TabIndex = 14;
 			this.pictureBoxPhoto.TabStop = false;
+			this.pictureBoxPhoto.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pictureBoxPhoto_MouseDoubleClick);
 			this.pictureBoxPhoto.MouseHover += new System.EventHandler(this.pictureBoxPhoto_MouseHover);
 			// 
 			// labelID
