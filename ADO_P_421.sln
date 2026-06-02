@@ -8,8 +8,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBtools", "DBtools\DBtools.csproj", "{4245C27D-EEA3-4256-9793-EE14B9489E43}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLLcheck", "DLLcheck\DLLcheck.csproj", "{5AF6A26F-B847-4437-A3D8-B83AADBDF000}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4245C27D-EEA3-4256-9793-EE14B9489E43} = {4245C27D-EEA3-4256-9793-EE14B9489E43}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Academy", "Academy\Academy.csproj", "{6AE8D062-14F4-4849-8DA2-A8C7089E22A3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4245C27D-EEA3-4256-9793-EE14B9489E43} = {4245C27D-EEA3-4256-9793-EE14B9489E43}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
