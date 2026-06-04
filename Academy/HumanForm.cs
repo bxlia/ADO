@@ -20,7 +20,7 @@ namespace Academy
 		}
 		protected virtual void Compress()
 		{
-			//Упаковывает пользовательские данные из формы а обЪект класса 'Human':
+			//Упаковывает пользовательские данные из формы в объект класса 'Human':
 			human = new Models.Human
 				(
 				Convert.ToInt32(labelID.Text == "" ? "0" : labelID.Text.Split(':').Last()),
@@ -32,6 +32,17 @@ namespace Academy
 				tbPhone.Text,
 				pictureBoxPhoto.Image
 				);
+		}
+		protected virtual void Exctract()
+		{
+			this.labelID.Text = $"ID:{human.id}";
+			this.tbLastName.Text = human.last_name;
+			this.tbFirstName.Text = human.first_name;
+			this.tbMiddleName.Text = human.middle_name;
+			this.dtpBirthDate.Value = Convert.ToDateTime(human.birth_date);
+			this.tbEmail.Text = human.email;
+			this.tbPhone.Text = human.phone;
+			this.pictureBoxPhoto.Image = human.photo;
 		}
 
 		protected virtual void btnOK_Click(object sender, EventArgs e)

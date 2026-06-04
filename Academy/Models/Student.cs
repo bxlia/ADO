@@ -10,7 +10,7 @@ namespace Academy.Models
 {
 	class Student : Human
 	{
-		int group;
+		internal int group;
 		public Student
 			(
 			int id,
@@ -21,6 +21,11 @@ namespace Academy.Models
 		{
 			this.group = group;
 		}
+		public Student(object[] values) : base(values)
+		{
+			this.group = (int)values[8];
+		}
+
 		public Student(Human human, int group) : base(human)
 		{
 			this.group = group;

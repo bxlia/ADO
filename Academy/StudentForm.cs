@@ -27,8 +27,15 @@ namespace Academy
 				(
 					"*", "Students", $"stud_id={id}"
 				);
+			human = student = new Models.Student(data.Rows[0].ItemArray);
+			//data.Rows[0].ItemArray
 		}
-
+		protected override void Exctract()
+		{
+			base.Exctract();
+			cbGroup.SelectedValue = student.group;
+			Exctract();
+		}
 		protected override void btnOK_Click(object sender, EventArgs e)
 		{
 			base.btnOK_Click(sender, e);
