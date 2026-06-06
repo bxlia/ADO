@@ -16,6 +16,7 @@ namespace Academy
 		public StudentForm()
 		{
 			InitializeComponent();
+			this.Text = "Добавление студента";
 			//cbGroup.DataSource = DataBase.Connector.Select($"SELECT group_id,group_name FROM Groups");
 			//cbGroup.DisplayMember = "group_name";
 			//cbGroup.ValueMember = "group_id";
@@ -27,14 +28,15 @@ namespace Academy
 				(
 					"*", "Students", $"stud_id={id}"
 				);
+			this.Text = "Редактирование студента";
 			human = student = new Models.Student(data.Rows[0].ItemArray);
+			Exctract();
 			//data.Rows[0].ItemArray
 		}
 		protected override void Exctract()
 		{
 			base.Exctract();
 			cbGroup.SelectedValue = student.group;
-			Exctract();
 		}
 		protected override void btnOK_Click(object sender, EventArgs e)
 		{
