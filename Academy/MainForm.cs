@@ -142,6 +142,15 @@ namespace Academy
 			}
 		}
 
+		private void btnAddTeacher_Click(object sender, EventArgs e)
+		{
+			TeacherForm teacherForm = new TeacherForm();
+			if(teacherForm.ShowDialog() == DialogResult.OK)
+			{
+				tabControl_SelectedIndexChanged((TabControl)tabControl, null);
+			}
+		}
+
 		private void dgvStudents_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
 		{
 			int id = Convert.ToInt32(dgvStudents.Rows[e.RowIndex].Cells[0].Value);
@@ -152,5 +161,6 @@ namespace Academy
 			dgvStudents.Rows[e.RowIndex].Selected = true;
 			dgvStudents.FirstDisplayedScrollingRowIndex = firstDisplayingRow;
 		}
+
 	}
 }

@@ -270,6 +270,7 @@
 			this.btnAddTeacher.TabIndex = 4;
 			this.btnAddTeacher.Text = "Добавить";
 			this.btnAddTeacher.UseVisualStyleBackColor = true;
+			this.btnAddTeacher.Click += new System.EventHandler(this.btnAddTeacher_Click);
 			// 
 			// dgvTeachers
 			// 
