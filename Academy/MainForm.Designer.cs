@@ -150,6 +150,7 @@
 			this.dgvStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvStudents.Location = new System.Drawing.Point(11, 49);
 			this.dgvStudents.Margin = new System.Windows.Forms.Padding(6);
+			this.dgvStudents.MultiSelect = false;
 			this.dgvStudents.Name = "dgvStudents";
 			this.dgvStudents.ReadOnly = true;
 			this.dgvStudents.RowHeadersWidth = 82;
