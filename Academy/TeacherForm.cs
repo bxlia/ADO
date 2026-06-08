@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Academy.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,6 +25,10 @@ namespace Academy
 		//	teacher.work_since = dtpWorkSince.Value.ToString();
 		//	teacher.rate = mtbRate.Text;
 		//}
+		public TeacherForm(int id) : this()
+		{
+			this.Text = "Редактирование преподователя";
+		}
 		protected override void Exctract()
 		{
 			base.Exctract();

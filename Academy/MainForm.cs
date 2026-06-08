@@ -162,5 +162,11 @@ namespace Academy
 			dgvStudents.FirstDisplayedScrollingRowIndex = firstDisplayingRow;
 		}
 
+		private void dgvTeachers_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+		{
+			TeacherForm teacherForm = new TeacherForm();
+			if (teacherForm.ShowDialog() == DialogResult.OK)
+				tabControl_SelectedIndexChanged(tabControl, null);
+		}
 	}
 }
