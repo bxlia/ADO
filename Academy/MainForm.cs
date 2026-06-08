@@ -145,7 +145,7 @@ namespace Academy
 		private void btnAddTeacher_Click(object sender, EventArgs e)
 		{
 			TeacherForm teacherForm = new TeacherForm();
-			if(teacherForm.ShowDialog() == DialogResult.OK)
+			if (teacherForm.ShowDialog() == DialogResult.OK)
 			{
 				tabControl_SelectedIndexChanged((TabControl)tabControl, null);
 			}
@@ -164,9 +164,18 @@ namespace Academy
 
 		private void dgvTeachers_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
 		{
-			TeacherForm teacherForm = new TeacherForm();
-			if (teacherForm.ShowDialog() == DialogResult.OK)
-				tabControl_SelectedIndexChanged(tabControl, null);
+			if (dgvTeachers.SelectedRows.Count > 0)
+			{
+				int id = Convert.ToInt32(dgvTeachers.Rows[e.RowIndex].Cells[0].Value);
+				int firstDisplayingRow = dgvTeachers.FirstDisplayedScrollingRowIndex;
+				TeacherForm teacherForm = new TeacherForm(id);
+				if (teacherForm.ShowDialog() == DialogResult.OK)
+				{
+					tabControl_SelectedIndexChanged(tabControl, null);
+					dgvTeachers.Rows[e.RowIndex].Selected = true;
+					dgvTeachers.FirstDisplayedScrollingRowIndex = firstDisplayingRow;
+				}
+			}
 		}
 	}
 }

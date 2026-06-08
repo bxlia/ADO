@@ -28,6 +28,12 @@ namespace Academy
 		public TeacherForm(int id) : this()
 		{
 			this.Text = "Редактирование преподователя";
+			DataTable data = DataBase.Connector.Load
+				(
+					"*", "Teachers", $"teacher_id={id}"
+				);
+			human = teacher = new Models.Teacher(data.Rows[0].ItemArray);
+			Exctract();
 		}
 		protected override void Exctract()
 		{
@@ -48,7 +54,7 @@ namespace Academy
 				);
 			else DataBase.Connector.Update
 				(
-					"Teachers", teacher.GetUpdateExpression(), $"teacher_={teacher.id}"
+					"Teachers", teacher.GetUpdateExpression(), $"teacher_id={teacher.id}"
 				);
 			if (pictureBoxPhoto.Image != null)
 				DataBase.Connector.UploadPhoto(teacher.SerializePhoto(), teacher.id, "photo", "Teachers");

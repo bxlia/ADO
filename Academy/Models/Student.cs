@@ -23,7 +23,7 @@ namespace Academy.Models
 		}
 		public Student(object[] values) : base(values)
 		{
-			this.group = (int)values[8];
+			this.group = Convert.ToInt32(values[8]);
 		}
 
 		public Student(Human human, int group) : base(human)
