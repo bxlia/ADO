@@ -184,6 +184,7 @@ namespace Academy
 			if (dgvTeachers.SelectedRows.Count > 0)
 			{
 				int id = Convert.ToInt32(dgvTeachers.Rows[e.RowIndex].Cells[0].Value);
+				Console.WriteLine(id);
 				int firstDisplayingRow = dgvTeachers.FirstDisplayedScrollingRowIndex;
 				TeacherForm teacherForm = new TeacherForm(id);
 				if (teacherForm.ShowDialog() == DialogResult.OK)
