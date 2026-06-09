@@ -51,6 +51,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBase.cs" />
+    <Compile Include="DirectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectionForm.Designer.cs">
+      <DependentUpon>DirectionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DisciplineForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DisciplineForm.Designer.cs">
+      <DependentUpon>DisciplineForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="HumanForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +75,8 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Direction.cs" />
+    <Compile Include="Models\Discipline.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Human.cs" />
     <Compile Include="Models\Teacher.cs" />
@@ -81,6 +95,12 @@
     <Compile Include="TeacherForm.Designer.cs">
       <DependentUpon>TeacherForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DirectionForm.resx">
+      <DependentUpon>DirectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DisciplineForm.resx">
+      <DependentUpon>DisciplineForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HumanForm.resx">
       <DependentUpon>HumanForm.cs</DependentUpon>
     </EmbeddedResource>

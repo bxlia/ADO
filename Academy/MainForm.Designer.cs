@@ -41,12 +41,14 @@
 			this.cbGroupsDirection = new System.Windows.Forms.ComboBox();
 			this.dgvGroups = new System.Windows.Forms.DataGridView();
 			this.tabPageDirections = new System.Windows.Forms.TabPage();
+			this.btnAddDirection = new System.Windows.Forms.Button();
 			this.dgvDirections = new System.Windows.Forms.DataGridView();
 			this.tabPageDisciplines = new System.Windows.Forms.TabPage();
 			this.dgvDisciplines = new System.Windows.Forms.DataGridView();
 			this.tabPageTeachers = new System.Windows.Forms.TabPage();
 			this.btnAddTeacher = new System.Windows.Forms.Button();
 			this.dgvTeachers = new System.Windows.Forms.DataGridView();
+			this.btnAddDiscipline = new System.Windows.Forms.Button();
 			this.statusStrip.SuspendLayout();
 			this.tabControl.SuspendLayout();
 			this.tabPageStudents.SuspendLayout();
@@ -198,6 +200,7 @@
 			// 
 			// tabPageDirections
 			// 
+			this.tabPageDirections.Controls.Add(this.btnAddDirection);
 			this.tabPageDirections.Controls.Add(this.dgvDirections);
 			this.tabPageDirections.Location = new System.Drawing.Point(8, 39);
 			this.tabPageDirections.Margin = new System.Windows.Forms.Padding(6);
@@ -208,6 +211,17 @@
 			this.tabPageDirections.Text = "Directions";
 			this.tabPageDirections.UseVisualStyleBackColor = true;
 			// 
+			// btnAddDirection
+			// 
+			this.btnAddDirection.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnAddDirection.Location = new System.Drawing.Point(1159, 9);
+			this.btnAddDirection.Name = "btnAddDirection";
+			this.btnAddDirection.Size = new System.Drawing.Size(308, 35);
+			this.btnAddDirection.TabIndex = 4;
+			this.btnAddDirection.Text = "Добавить";
+			this.btnAddDirection.UseVisualStyleBackColor = true;
+			this.btnAddDirection.Click += new System.EventHandler(this.btnAddDirection_Click);
+			// 
 			// dgvDirections
 			// 
 			this.dgvDirections.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -216,14 +230,19 @@
 			this.dgvDirections.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			this.dgvDirections.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvDirections.Location = new System.Drawing.Point(1, 49);
+			this.dgvDirections.MultiSelect = false;
 			this.dgvDirections.Name = "dgvDirections";
+			this.dgvDirections.ReadOnly = true;
 			this.dgvDirections.RowHeadersWidth = 82;
 			this.dgvDirections.RowTemplate.Height = 33;
+			this.dgvDirections.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dgvDirections.Size = new System.Drawing.Size(1476, 633);
 			this.dgvDirections.TabIndex = 0;
+			this.dgvDirections.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvDirections_CellMouseDoubleClick);
 			// 
 			// tabPageDisciplines
 			// 
+			this.tabPageDisciplines.Controls.Add(this.btnAddDiscipline);
 			this.tabPageDisciplines.Controls.Add(this.dgvDisciplines);
 			this.tabPageDisciplines.Location = new System.Drawing.Point(8, 39);
 			this.tabPageDisciplines.Margin = new System.Windows.Forms.Padding(6);
@@ -242,11 +261,15 @@
 			this.dgvDisciplines.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			this.dgvDisciplines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvDisciplines.Location = new System.Drawing.Point(1, 50);
+			this.dgvDisciplines.MultiSelect = false;
 			this.dgvDisciplines.Name = "dgvDisciplines";
+			this.dgvDisciplines.ReadOnly = true;
 			this.dgvDisciplines.RowHeadersWidth = 82;
 			this.dgvDisciplines.RowTemplate.Height = 33;
+			this.dgvDisciplines.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dgvDisciplines.Size = new System.Drawing.Size(1499, 704);
 			this.dgvDisciplines.TabIndex = 0;
+			this.dgvDisciplines.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvDisciplines_CellMouseDoubleClick);
 			// 
 			// tabPageTeachers
 			// 
@@ -289,6 +312,17 @@
 			this.dgvTeachers.Size = new System.Drawing.Size(1458, 709);
 			this.dgvTeachers.TabIndex = 0;
 			this.dgvTeachers.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvTeachers_CellMouseDoubleClick);
+			// 
+			// btnAddDiscipline
+			// 
+			this.btnAddDiscipline.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnAddDiscipline.Location = new System.Drawing.Point(1159, 9);
+			this.btnAddDiscipline.Name = "btnAddDiscipline";
+			this.btnAddDiscipline.Size = new System.Drawing.Size(308, 35);
+			this.btnAddDiscipline.TabIndex = 5;
+			this.btnAddDiscipline.Text = "Добавить";
+			this.btnAddDiscipline.UseVisualStyleBackColor = true;
+			this.btnAddDiscipline.Click += new System.EventHandler(this.btnAddDiscipline_Click);
 			// 
 			// MainForm
 			// 
@@ -339,5 +373,7 @@
 		private System.Windows.Forms.ComboBox cbStudentsDirection;
 		private System.Windows.Forms.Button btnAddStudent;
 		private System.Windows.Forms.Button btnAddTeacher;
+		private System.Windows.Forms.Button btnAddDirection;
+		private System.Windows.Forms.Button btnAddDiscipline;
 	}
 }

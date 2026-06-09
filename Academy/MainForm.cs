@@ -150,6 +150,23 @@ namespace Academy
 				tabControl_SelectedIndexChanged((TabControl)tabControl, null);
 			}
 		}
+		private void btnAddDirection_Click(object sender, EventArgs e)
+		{
+			DirectionForm directionForm = new DirectionForm();
+			if (directionForm.ShowDialog() == DialogResult.OK)
+			{
+				tabControl_SelectedIndexChanged((TabControl)tabControl, null);
+			}
+		}
+		private void btnAddDiscipline_Click(object sender, EventArgs e)
+		{
+			DisciplineForm disciplineForm = new DisciplineForm();
+			if(disciplineForm.ShowDialog() == DialogResult.OK)
+			{
+				tabControl_SelectedIndexChanged((TabControl)tabControl, null);
+			}
+		}
+
 
 		private void dgvStudents_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
 		{
@@ -174,6 +191,37 @@ namespace Academy
 					tabControl_SelectedIndexChanged(tabControl, null);
 					dgvTeachers.Rows[e.RowIndex].Selected = true;
 					dgvTeachers.FirstDisplayedScrollingRowIndex = firstDisplayingRow;
+				}
+			}
+		}
+		private void dgvDirections_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+		{
+			if (dgvDirections.SelectedRows.Count > 0)
+			{
+				int id = Convert.ToInt32(dgvDirections.Rows[e.RowIndex].Cells[0].Value);
+				int firstDisplayingRow = dgvDirections.FirstDisplayedScrollingRowIndex;
+				DirectionForm directionForm = new DirectionForm(id);
+				if(directionForm.ShowDialog() == DialogResult.OK)
+				{
+					tabControl_SelectedIndexChanged(tabControl, null);
+					dgvDirections.Rows[e.RowIndex].Selected = true;
+					dgvDirections.FirstDisplayedScrollingRowIndex = firstDisplayingRow;
+				}
+			}
+		}
+
+		private void dgvDisciplines_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+		{
+			if (dgvDisciplines.SelectedRows.Count > 0)
+			{
+				int id = Convert.ToInt32(dgvDisciplines.Rows[e.RowIndex].Cells[0].Value);
+				int firstDisplayingRow = dgvDisciplines.FirstDisplayedScrollingRowIndex;
+				DirectionForm disciplineForm = new DirectionForm(id);
+				if (disciplineForm.ShowDialog() == DialogResult.OK)
+				{
+					tabControl_SelectedIndexChanged(tabControl, null);
+					dgvDisciplines.Rows[e.RowIndex].Selected = true;
+					dgvDisciplines.FirstDisplayedScrollingRowIndex = firstDisplayingRow;
 				}
 			}
 		}
